@@ -6,39 +6,39 @@ const options = {
         info: {
             title: 'Whatsapp Gateway Cht API',
             version: '1.4.0',
-            description: `A powerful WhatsApp API backend built with Express.js and Baileys library.
+            description: `Backend API WhatsApp yang andal dibangun dengan Express.js dan pustaka Baileys.
 
-## Quick Links
-- [🎛️ Dashboard](/dashboard) - Admin Dashboard with API Tester
-- [🔌 WebSocket Test](/ws-test) - Test real-time WebSocket events
-- [📄 OpenAPI JSON](/api-docs.json) - Download API specification
+## Tautan Cepat
+- [🎛️ Dasbor](/dashboard) - Dasbor Admin dengan Penguji API
+- [🔌 Uji WebSocket](/ws-test) - Uji event WebSocket real-time
+- [📄 OpenAPI JSON](/api-docs.json) - Unduh spesifikasi API
 
 
-## Features
-- Multi-Session Support
-- Real-time WebSocket Events
-- Group Management
-- Send Messages (Text, Image, Document, Location, Contact)
-- Auto-Save Media
-- Persistent Store
-- API Key Authentication
+## Fitur
+- Dukungan Multi-Sesi
+- Event WebSocket Real-time
+- Manajemen Grup
+- Kirim Pesan (Teks, Gambar, Dokumen, Lokasi, Kontak)
+- Simpan Media Otomatis
+- Penyimpanan Persisten
+- Autentikasi API Key
 
-## Authentication
-All API endpoints require \`X-Api-Key\` header (if API_KEY is configured in .env).
+## Autentikasi
+Semua endpoint API memerlukan header \`X-Api-Key\` (jika API_KEY dikonfigurasi di .env).
 
-## Full Documentation
+## Dokumentasi Lengkap
 - [https://docs.chatery.app](https://docs.chatery.app)
 - [https://chatery-whatsapp-documentation.appwrite.network](https://chatery-whatsapp-documentation.appwrite.network)
 
-## ⭐ Support This Project
-- [⭐ Star on GitHub](https://github.com/farinchan/chatery_backend) - Give us a star!
-- [☕ Buy Me a Coffee (saweria)](https://saweria.co/fajrichan) - Support the developer
+## Dukung Proyek Ini
+- [⭐ Star di GitHub](https://github.com/mfth12/wa-gateway-cht) - Beri kami bintang!
+- [☕ Dukung Kami (saweria)](https://saweria.co/mfth12) - Dukung pengembang
 
             `,
             contact: {
-                name: 'Fajri Rinaldi Chan',
-                email: 'fajri@gariskode.com',
-                url: 'https://github.com/farinchan'
+                name: 'Miftahul Haq',
+                email: 'ciftah12@gmail.com',
+                url: 'https://github.com/mfth12'
             },
             license: {
                 name: 'MIT',

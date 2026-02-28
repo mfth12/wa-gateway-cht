@@ -15,9 +15,9 @@
         }
 
         :root {
-            --primary: #25D366;
-            --primary-dark: #128C7E;
-            --secondary: #075E54;
+            --primary: rgb(50, 176, 234);
+            --primary-dark: rgb(16, 113, 158);
+            --secondary: #656565;
             --bg-dark: #0a0a0a;
             --bg-card: #141414;
             --bg-card-hover: #1a1a1a;
@@ -27,7 +27,7 @@
             --danger: #ff4757;
             --warning: #ffa502;
             --info: #3498db;
-            --success: #2ed573;
+            --success: #10da20;
         }
 
         body {
@@ -810,10 +810,10 @@
         <div class="header-actions">
             <div class="status-badge">
                 <div class="status-dot" id="wsStatus"></div>
-                <span id="wsStatusText">WebSocket Disconnected</span>
+                <span id="wsStatusText">WebSocket Status</span>
             </div>
-            <a href="/ws-test" class="btn btn-outline btn-sm">WebSocket Tester</a>
-            <button onclick="logout()" class="btn btn-danger btn-sm">🚪 Logout</button>
+            <a href="/ws-test" class="btn btn-outline">Uji WebSocket</a>
+            <button onclick="logout()" class="btn btn-danger">Keluar</button>
         </div>
     </header>
 
@@ -823,19 +823,19 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total Sessions</div>
-                <div class="stat-value info" id="statSessions">0</div>
+                <div class="stat-value info" id="statSessions">--</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Connected</div>
-                <div class="stat-value success" id="statConnected">0</div>
+                <div class="stat-value success" id="statConnected">--</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Disconnected</div>
-                <div class="stat-value danger" id="statDisconnected">0</div>
+                <div class="stat-value danger" id="statDisconnected">--</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">WebSocket Clients</div>
-                <div class="stat-value warning" id="statWsClients">0</div>
+                <div class="stat-value warning" id="statWsClients">--</div>
             </div>
         </div>
 
@@ -847,8 +847,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">📱 Sessions</div>
-                        <button class="btn btn-primary btn-sm" onclick="showCreateSession()">
-                            + New Session
+                        <button class="btn btn-primary" onclick="showCreateSession()">
+                            New Session
                         </button>
                     </div>
                     <div class="card-body">
@@ -1027,7 +1027,7 @@
                 </div>
 
                 <!-- Quick Send -->
-                <div class="card" style="margin-top: 24px;">
+                <!-- <div class="card" style="margin-top: 24px;">
                     <div class="card-header">
                         <div class="card-title">✉️ Quick Send</div>
                     </div>
@@ -1051,7 +1051,7 @@
                             Send Message
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -1327,7 +1327,7 @@
 
             socket.on('connect', () => {
                 updateWsStatus(true);
-                addEvent('connection', 'WebSocket connected');
+                addEvent('connection', 'WebSocket terhubung');
 
                 // Subscribe to all sessions
                 sessions.forEach(s => socket.emit('subscribe', s.sessionId));
@@ -1335,7 +1335,7 @@
 
             socket.on('disconnect', () => {
                 updateWsStatus(false);
-                addEvent('error', 'WebSocket disconnected');
+                addEvent('error', 'WebSocket tidak terhubung');
             });
 
             // WhatsApp Events
@@ -1374,10 +1374,10 @@
             const text = document.getElementById('wsStatusText');
             if (connected) {
                 dot.classList.add('connected');
-                text.textContent = 'WebSocket Connected';
+                text.textContent = 'WebSocket Terhubung';
             } else {
                 dot.classList.remove('connected');
-                text.textContent = 'WebSocket Disconnected';
+                text.textContent = 'WebSocket Tidak Terhubung';
             }
         }
 

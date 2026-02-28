@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatery Dashboard - WhatsApp API</title>
+    <title>Whatsapp Gateway Cht - Dashboard</title>
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -805,7 +805,7 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">
-            <div class="logo-text">Chatery<span>API</span></div>
+            <div class="logo-text">Whatsapp<span>Gateway</span>Cht</div>
         </div>
         <div class="header-actions">
             <div class="status-badge">
@@ -1059,26 +1059,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-buttons">
-                <a href="https://saweria.co/fajrichan" target="_blank" class="btn btn-donate">
-                    ☕ Buy Me a Coffee
-                </a>
-                <a href="https://github.com/farinchan/chatery_whatsapp" target="_blank" class="btn btn-github">
-                    ⭐ Star on GitHub
-                </a>
-                <a href="https://www.linkedin.com/in/fajri-chan" target="_blank" class="btn btn-outline">
-                    💼 LinkedIn
-                </a>
-            </div>
             <div class="footer-credit">
-                Made with ❤️ by <a href="https://github.com/farinchan" target="_blank">Farin Chan</a> |
-                <strong>Chatery API</strong> - WhatsApp Multi-Session Gateway
+                Made with ❤️ by <a href="https://github.com/mfth12" target="_blank">mfth12</a>.
+                <strong>Whatsapp Gateway Cht</strong>
             </div>
             <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">
-                📊 <strong>Fitur:</strong> Text, Image, Document, Audio, Location, Contact, Poll, Bulk Messaging, Reply Messages
+                📊 <strong>Fitur:</strong> Text, Image, Document, Audio, Location, Contact, Poll, Bulk Messaging, Reply
+                Messages
             </div>
             <div style="font-size: 12px; color: var(--text-muted);">
-                © <span id="footerYear"></span> Chatery. Open Source under MIT License.
+                © <span id="footerYear"></span> Whatsapp Gateway Cht. Open Source under MIT License.
 
             </div>
         </div>
@@ -1290,7 +1280,7 @@
                         sessionStorage.setItem('api_key', apiKey);
                     }
 
-                    alert('✅ Login successful! Welcome to Chatery Dashboard.');
+                    alert('✅ Login successful! Welcome to Whatsapp Gateway Cht Dashboard.');
                     return true;
                 } else {
                     alert('❌ ' + data.message);
@@ -1749,7 +1739,7 @@
                 body = {
                     sessionId: '',
                     chatId: '628123456789',
-                    message: 'Hello from Chatery API!',
+                    message: 'Hello from Whatsapp Gateway Cht!',
                     typingTime: 0,
                     replyTo: null
                 };
@@ -1823,7 +1813,7 @@
                     sessionId: '',
                     chatId: '628123456789',
                     text: 'Please choose an option:',
-                    footer: 'Powered by Chatery',
+                    footer: 'Powered by Whatsapp Gateway Cht',
                     buttons: ['Option 1', 'Option 2', 'Option 3'],
                     typingTime: 0,
                     replyTo: null
@@ -1854,7 +1844,7 @@
                 body = {
                     sessionId: '',
                     recipients: ['628123456789', '628987654321', '628111222333'],
-                    message: 'Hello from Chatery Bulk API!',
+                    message: 'Hello from Whatsapp Gateway Cht - Bulk API!',
                     delay: 1000
                 };
                 helpText = `📤 Send bulk text messages (runs in background).<br>
@@ -2316,13 +2306,13 @@
 
         async function removeWebhook(url) {
             console.log('removeWebhook called with:', url);
-            
+
             if (!url) {
                 showToast('error', 'Webhook URL is missing');
                 console.error('removeWebhook: url is undefined or empty');
                 return;
             }
-            
+
             if (!confirm(`Remove webhook?\n${url}`)) {
                 return;
             }
@@ -2332,7 +2322,7 @@
                 const encodedUrl = encodeURIComponent(url);
                 const fullUrl = `${API_BASE}/sessions/${currentWebhookSessionId}/webhooks?url=${encodedUrl}`;
                 console.log('DELETE request to:', fullUrl);
-                
+
                 const response = await apiFetch(fullUrl, {
                     method: 'DELETE'
                 });

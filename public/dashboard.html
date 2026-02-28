@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whatsapp Gateway Cht - Dashboard</title>
+    <title>Whatsapp Gateway Cht - Dasbor</title>
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <style>
         * {
             margin: 0;
@@ -805,15 +806,20 @@
     <!-- Header -->
     <header class="header">
         <div class="logo">
+            <div class="logo-icon"><i class="ti ti-brand-whatsapp"></i></div>
             <div class="logo-text">Whatsapp<span>Gateway</span>Cht</div>
         </div>
         <div class="header-actions">
             <div class="status-badge">
                 <div class="status-dot" id="wsStatus"></div>
-                <span id="wsStatusText">WebSocket Status</span>
+                <span id="wsStatusText">Status WebSocket</span>
             </div>
-            <a href="/ws-test" class="btn btn-outline">Uji WebSocket</a>
-            <button onclick="logout()" class="btn btn-danger">Keluar</button>
+            <a href="/ws-test" class="btn btn-outline">
+                <i class="ti ti-plug"></i> Uji WebSocket
+            </a>
+            <button onclick="logout()" class="btn btn-danger">
+                <i class="ti ti-logout"></i> Keluar
+            </button>
         </div>
     </header>
 
@@ -822,19 +828,19 @@
         <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total Sessions</div>
+                <div class="stat-label">Total Sesi</div>
                 <div class="stat-value info" id="statSessions">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Connected</div>
+                <div class="stat-label">Terhubung</div>
                 <div class="stat-value success" id="statConnected">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Disconnected</div>
+                <div class="stat-label">Terputus</div>
                 <div class="stat-value danger" id="statDisconnected">--</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">WebSocket Clients</div>
+                <div class="stat-label">Klien WebSocket</div>
                 <div class="stat-value warning" id="statWsClients">--</div>
             </div>
         </div>
@@ -846,17 +852,17 @@
                 <!-- Sessions Card -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📱 Sessions</div>
+                        <div class="card-title"><i class="ti ti-device-mobile"></i> Sesi</div>
                         <button class="btn btn-primary" onclick="showCreateSession()">
-                            New Session
+                            <i class="ti ti-plus"></i> Sesi Baru
                         </button>
                     </div>
                     <div class="card-body">
                         <div id="sessionsList" class="session-list">
                             <div class="empty-state">
-                                <div class="empty-state-icon">📱</div>
-                                <p>No sessions yet</p>
-                                <p style="font-size: 13px; margin-top: 8px;">Create a new session to get started</p>
+                                <div class="empty-state-icon"><i class="ti ti-device-mobile"></i></div>
+                                <p>Belum ada sesi</p>
+                                <p style="font-size: 13px; margin-top: 8px;">Buat sesi baru untuk memulai</p>
                             </div>
                         </div>
                     </div>
@@ -865,7 +871,7 @@
                 <!-- API Tester -->
                 <div class="card api-tester">
                     <div class="card-header">
-                        <div class="card-title">🧪 API Tester</div>
+                        <div class="card-title"><i class="ti ti-test-pipe"></i> Penguji API</div>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -983,25 +989,25 @@
                             </select>
                         </div>
                         <div class="form-group" id="sessionIdGroup" style="display: none;">
-                            <label class="form-label">Session ID (for URL)</label>
-                            <input type="text" class="form-input" id="apiSessionId" placeholder="Enter session ID">
+                            <label class="form-label">ID Sesi (untuk URL)</label>
+                            <input type="text" class="form-input" id="apiSessionId" placeholder="Masukkan ID sesi">
                         </div>
                         <div class="form-group" id="jobIdGroup" style="display: none;">
-                            <label class="form-label">Job ID (for URL)</label>
+                            <label class="form-label">ID Job (untuk URL)</label>
                             <input type="text" class="form-input" id="apiJobId"
-                                placeholder="Enter job ID (e.g., bulk_123456789_abc123def)">
+                                placeholder="Masukkan ID job (misal: bulk_123456789_abc123def)">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Request Body (JSON)</label>
+                            <label class="form-label">Payload Permintaan (JSON)</label>
                             <textarea class="json-editor" id="apiBody" placeholder="{}"></textarea>
                         </div>
                         <button class="btn btn-primary" onclick="sendApiRequest()" id="btnSendApi">
-                            Send Request
+                            <i class="ti ti-send"></i> Kirim Permintaan
                         </button>
                         <div class="api-help" id="apiHelp" style="display: none;"></div>
                         <div class="form-group" style="margin-top: 16px;">
-                            <label class="form-label">Response</label>
-                            <div class="response-box" id="apiResponse">Response will appear here...</div>
+                            <label class="form-label">Respons</label>
+                            <div class="response-box" id="apiResponse">Respons akan muncul di sini...</div>
                         </div>
                     </div>
                 </div>
@@ -1012,15 +1018,17 @@
                 <!-- Events Log -->
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">📡 Live Events</div>
-                        <button class="btn btn-outline btn-sm" onclick="clearEvents()">Clear</button>
+                        <div class="card-title"><i class="ti ti-broadcast"></i> Event Langsung</div>
+                        <button class="btn btn-outline btn-sm" onclick="clearEvents()"><i class="ti ti-trash"></i>
+                            Bersihkan</button>
                     </div>
                     <div class="card-body" style="padding: 0;">
                         <div class="events-log" id="eventsLog">
                             <div class="empty-state">
-                                <div class="empty-state-icon">📡</div>
-                                <p>No events yet</p>
-                                <p style="font-size: 13px; margin-top: 8px;">Events will appear here in real-time</p>
+                                <div class="empty-state-icon"><i class="ti ti-broadcast"></i></div>
+                                <p>Belum ada event</p>
+                                <p style="font-size: 13px; margin-top: 8px;">Event akan muncul di sini secara real-time
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -1060,15 +1068,15 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-credit">
-                Made with ❤️ by <a href="https://github.com/mfth12" target="_blank">mfth12</a>.
+                Dibuat dengan ❤️ oleh <a href="https://github.com/mfth12" target="_blank">mfth12</a>.
                 <strong>Whatsapp Gateway Cht</strong>
             </div>
             <div style="font-size: 12px; color: var(--text-muted);">
-                📊 <strong>Key Features:</strong> Text, Image, Document, Audio, Location, Contact, Poll, Bulk
-                Messaging, Reply Messages.
+                📊 <strong>Fitur Utama:</strong> Teks, Gambar, Dokumen, Audio, Lokasi, Kontak, Polling, Bulk
+                Messaging, Balas Pesan.
             </div>
             <div style="font-size: 12px; color: var(--text-muted);">
-                Copyright © <span id="footerYear"></span>. Whatsapp Gateway Cht.
+                Hak Cipta © <span id="footerYear"></span>. Whatsapp Gateway Cht.
             </div>
         </div>
     </footer>
@@ -1076,52 +1084,55 @@
     <!-- QR Modal -->
     <div class="modal-overlay" id="qrModal">
         <div class="modal">
-            <div class="modal-title">📱 Scan QR Code</div>
-            <div class="modal-subtitle" id="qrSessionName">Session: -</div>
+            <div class="modal-title"><i class="ti ti-qrcode"></i> Scan QR Code</div>
+            <div class="modal-subtitle" id="qrSessionName">Sesi: -</div>
             <div class="qr-container" id="qrContainer">
                 <div class="qr-loading">
                     <div class="spinner"></div>
                 </div>
             </div>
             <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-                Open WhatsApp on your phone → Menu → Linked Devices → Link a Device
+                Buka WhatsApp di ponsel Anda → Menu → Perangkat Tertaut → Tautkan Perangkat
             </p>
-            <button class="btn btn-outline" onclick="closeQrModal()">Close</button>
+            <button class="btn btn-outline" onclick="closeQrModal()"><i class="ti ti-x"></i> Tutup</button>
         </div>
     </div>
 
     <!-- Create Session Modal -->
     <div class="modal-overlay" id="createSessionModal">
         <div class="modal" style="max-width: 500px;">
-            <div class="modal-title">➕ Create New Session</div>
-            <div class="modal-subtitle">Enter session details and optional configuration</div>
+            <div class="modal-title"><i class="ti ti-plus"></i> Buat Sesi Baru</div>
+            <div class="modal-subtitle">Masukkan detail sesi dan konfigurasi opsional</div>
 
             <div class="form-group" style="text-align: left;">
-                <label class="form-label">Session ID *</label>
-                <input type="text" class="form-input" id="newSessionId" placeholder="e.g. my-session-1"
+                <label class="form-label">ID Sesi *</label>
+                <input type="text" class="form-input" id="newSessionId" placeholder="misal: sesi-saya-1"
                     pattern="[a-zA-Z0-9_-]+">
-                <small style="color: var(--text-muted); font-size: 12px;">Only letters, numbers, underscore, and dash
-                    allowed</small>
+                <small style="color: var(--text-muted); font-size: 12px;">Hanya huruf, angka, garis bawah, dan strip
+                    yang diperbolehkan</small>
             </div>
 
             <div class="form-group" style="text-align: left;">
-                <label class="form-label">Webhook URL (optional)</label>
+                <label class="form-label">URL Webhook (opsional)</label>
                 <input type="url" class="form-input" id="newSessionWebhook"
-                    placeholder="https://your-server.com/webhook">
-                <small style="color: var(--text-muted); font-size: 12px;">URL to receive WhatsApp events</small>
+                    placeholder="https://server-anda.com/webhook">
+                <small style="color: var(--text-muted); font-size: 12px;">URL untuk menerima event WhatsApp</small>
             </div>
 
             <div class="form-group" style="text-align: left;">
-                <label class="form-label">Metadata (optional)</label>
-                <textarea class="form-input" id="newSessionMetadata" placeholder='{"appName": "MyApp", "userId": "123"}'
+                <label class="form-label">Metadata (opsional)</label>
+                <textarea class="form-input" id="newSessionMetadata"
+                    placeholder='{"appName": "AplikasiSaya", "userId": "123"}'
                     style="min-height: 80px; font-family: monospace; font-size: 12px;"></textarea>
-                <small style="color: var(--text-muted); font-size: 12px;">Custom JSON data to associate with this
-                    session</small>
+                <small style="color: var(--text-muted); font-size: 12px;">Data JSON kustom untuk dikaitkan dengan sesi
+                    ini</small>
             </div>
 
             <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
-                <button class="btn btn-outline" onclick="closeCreateSessionModal()">Cancel</button>
-                <button class="btn btn-primary" onclick="createSession()">Create & Connect</button>
+                <button class="btn btn-outline" onclick="closeCreateSessionModal()"><i class="ti ti-x"></i>
+                    Batal</button>
+                <button class="btn btn-primary" onclick="createSession()"><i class="ti ti-plus"></i> Buat &
+                    Hubungkan</button>
             </div>
         </div>
     </div>
@@ -1129,19 +1140,19 @@
     <!-- Webhooks Modal -->
     <div class="modal-overlay" id="webhooksModal">
         <div class="modal" style="max-width: 600px;">
-            <div class="modal-title">🔗 Manage Webhooks</div>
-            <div class="modal-subtitle" id="webhooksSessionName">Session: -</div>
+            <div class="modal-title"><i class="ti ti-link"></i> Kelola Webhook</div>
+            <div class="modal-subtitle" id="webhooksSessionName">Sesi: -</div>
 
             <!-- Add Webhook Form -->
             <div
                 style="background: var(--card-bg); border-radius: 8px; padding: 16px; margin-bottom: 16px; text-align: left;">
                 <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Webhook URL</label>
+                    <label class="form-label">URL Webhook</label>
                     <input type="url" class="form-input" id="newWebhookUrl"
-                        placeholder="https://your-server.com/webhook">
+                        placeholder="https://server-anda.com/webhook">
                 </div>
                 <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Events (optional - leave empty for all events)</label>
+                    <label class="form-label">Event (opsional - kosongkan untuk semua event)</label>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <label
                             style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
@@ -1181,19 +1192,20 @@
                         </label>
                     </div>
                 </div>
-                <button class="btn btn-primary" onclick="addWebhook()" style="width: 100%;">➕ Add Webhook</button>
+                <button class="btn btn-primary" onclick="addWebhook()" style="width: 100%;"><i class="ti ti-plus"></i>
+                    Tambah Webhook</button>
             </div>
 
             <!-- Existing Webhooks List -->
             <div style="text-align: left;">
-                <label class="form-label">Active Webhooks</label>
+                <label class="form-label">Webhook Aktif</label>
                 <div id="webhooksList" style="max-height: 200px; overflow-y: auto;">
-                    <div style="text-align: center; color: var(--text-muted); padding: 16px;">Loading...</div>
+                    <div style="text-align: center; color: var(--text-muted); padding: 16px;">Memuat...</div>
                 </div>
             </div>
 
             <div style="margin-top: 16px;">
-                <button class="btn btn-outline" onclick="closeWebhooksModal()">Close</button>
+                <button class="btn btn-outline" onclick="closeWebhooksModal()"><i class="ti ti-x"></i> Tutup</button>
             </div>
         </div>
     </div>
@@ -1409,9 +1421,9 @@
             if (sessions.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">📱</div>
-                        <p>No sessions yet</p>
-                        <p style="font-size: 13px; margin-top: 8px;">Create a new session to get started</p>
+                        <div class="empty-state-icon"><i class="ti ti-device-mobile"></i></div>
+                        <p>Belum ada sesi</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Buat sesi baru untuk memulai</p>
                     </div>
                 `;
                 return;
@@ -1429,24 +1441,24 @@
                     </div>
                     <div class="session-status ${session.status}">
                         <div class="status-dot ${session.status === 'connected' ? 'connected' : ''}"></div>
-                        ${session.status}
+                        ${session.status === 'connected' ? 'Terhubung' : (session.status === 'qr_ready' ? 'QR Siap' : (session.status === 'connecting' ? 'Menghubungkan' : 'Terputus'))}
                     </div>
                     <div class="session-actions">
                         ${session.status === 'qr_ready' ? `
-                            <button class="btn btn-outline btn-icon" onclick="showQrForSession('${session.sessionId}')" title="Show QR">
-                                📷
+                            <button class="btn btn-outline btn-icon" onclick="showQrForSession('${session.sessionId}')" title="Tampilkan QR">
+                                <i class="ti ti-qrcode"></i>
                             </button>
                         ` : ''}
                         ${session.status !== 'connected' ? `
-                            <button class="btn btn-outline btn-icon" onclick="reconnectSession('${session.sessionId}')" title="Reconnect">
-                                🔄
+                            <button class="btn btn-outline btn-icon" onclick="reconnectSession('${session.sessionId}')" title="Hubungkan Ulang">
+                                <i class="ti ti-refresh"></i>
                             </button>
                         ` : ''}
-                        <button class="btn btn-outline btn-icon" onclick="showWebhooksModal('${session.sessionId}')" title="Manage Webhooks">
-                            🔗
+                        <button class="btn btn-outline btn-icon" onclick="showWebhooksModal('${session.sessionId}')" title="Kelola Webhook">
+                            <i class="ti ti-link"></i>
                         </button>
-                        <button class="btn btn-danger btn-icon" onclick="deleteSession('${session.sessionId}')" title="Delete">
-                            🗑️
+                        <button class="btn btn-danger btn-icon" onclick="deleteSession('${session.sessionId}')" title="Hapus">
+                            <i class="ti ti-trash"></i>
                         </button>
                     </div>
                 </div>
@@ -1501,12 +1513,12 @@
             const metadataText = document.getElementById('newSessionMetadata').value.trim();
 
             if (!sessionId) {
-                showToast('error', 'Please enter a session ID');
+                showToast('error', 'Silakan masukkan ID sesi');
                 return;
             }
 
             if (!/^[a-zA-Z0-9_-]+$/.test(sessionId)) {
-                showToast('error', 'Invalid session ID format');
+                showToast('error', 'Format ID sesi tidak valid');
                 return;
             }
 
@@ -1529,7 +1541,7 @@
                     new URL(webhookUrl);
                     body.webhooks = [{ url: webhookUrl }];
                 } catch (e) {
-                    showToast('error', 'Invalid webhook URL');
+                    showToast('error', 'URL webhook tidak valid');
                     return;
                 }
             }
@@ -1543,7 +1555,7 @@
 
                 if (result.success) {
                     closeCreateSessionModal();
-                    showToast('success', 'Session created! Scan QR code to connect.');
+                    showToast('success', 'Sesi berhasil dibuat! Silakan scan QR code untuk menghubungkan.');
 
                     // Subscribe to this session
                     if (socket && socket.connected) {
@@ -1558,7 +1570,7 @@
                     showToast('error', result.message);
                 }
             } catch (error) {
-                showToast('error', 'Failed to create session');
+                showToast('error', 'Gagal membuat sesi');
             }
         }
 
@@ -1577,12 +1589,12 @@
                     document.getElementById('qrContainer').innerHTML = '<div class="qr-loading">QR not available</div>';
                 }
             } catch (error) {
-                document.getElementById('qrContainer').innerHTML = '<div class="qr-loading">Failed to load QR</div>';
+                document.getElementById('qrContainer').innerHTML = '<div class="qr-loading">Gagal memuat QR</div>';
             }
         }
 
         function showQrCode(sessionId, qrCode) {
-            document.getElementById('qrSessionName').textContent = `Session: ${sessionId}`;
+            document.getElementById('qrSessionName').textContent = `Sesi: ${sessionId}`;
             document.getElementById('qrContainer').innerHTML = `<img src="${qrCode}" alt="QR Code">`;
             document.getElementById('qrModal').classList.add('active');
         }

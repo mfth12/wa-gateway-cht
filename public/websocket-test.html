@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gateway Cht - WebSocket Test</title>
+    <title>Gateway Cht - Uji WebSocket</title>
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -224,8 +225,8 @@
 
 <body>
     <div class="container">
-        <h1>🔌 Gateway Cht - WebSocket Tester</h1>
-        <p class="subtitle">Real-time WhatsApp event monitoring</p>
+        <h1><i class="ti ti-plug"></i> Gateway Cht - Uji WebSocket</h1>
+        <p class="subtitle">Pemantauan event WhatsApp real-time</p>
 
         <div class="grid">
             <!-- Left Panel -->
@@ -234,7 +235,7 @@
                 <div class="panel" style="margin-bottom: 20px;">
                     <div class="status">
                         <div class="status-dot" id="statusDot"></div>
-                        <span id="statusText">Disconnected</span>
+                        <span id="statusText">Terputus</span>
                     </div>
 
                     <div class="form-group">
@@ -242,26 +243,27 @@
                         <input type="text" id="wsUrl" value="http://localhost:3000">
                     </div>
 
-                    <button class="btn-connect" id="btnConnect" onclick="toggleConnection()">Connect</button>
+                    <button class="btn-connect" id="btnConnect" onclick="toggleConnection()"><i class="ti ti-plug"></i>
+                        Hubungkan</button>
                 </div>
 
                 <!-- Subscribe Panel -->
                 <div class="panel">
-                    <h3 style="margin-top: 0; color: #4a90d9;">📡 Session Subscription</h3>
+                    <h3 style="margin-top: 0; color: #4a90d9;"><i class="ti ti-broadcast"></i> Langganan Sesi</h3>
 
                     <div id="subscribedSessions"></div>
 
                     <div class="form-group">
-                        <label>Session ID</label>
-                        <input type="text" id="sessionId" placeholder="e.g. session1">
+                        <label>ID Sesi</label>
+                        <input type="text" id="sessionId" placeholder="misal: sesi1">
                     </div>
 
-                    <button class="btn-subscribe" onclick="subscribe()">Subscribe</button>
+                    <button class="btn-subscribe" onclick="subscribe()"><i class="ti ti-rss"></i> Berlangganan</button>
                 </div>
 
                 <!-- QR Code Panel -->
                 <div class="panel qr-container" style="margin-top: 20px; display: none;" id="qrPanel">
-                    <h3 style="margin-top: 0;">📱 Scan QR Code</h3>
+                    <h3 style="margin-top: 0;"><i class="ti ti-qrcode"></i> Scan QR Code</h3>
                     <img id="qrImage" src="" alt="QR Code">
                 </div>
             </div>
@@ -269,8 +271,8 @@
             <!-- Right Panel - Events -->
             <div class="panel">
                 <div class="events-header">
-                    <h3>📨 Events</h3>
-                    <button class="btn-clear" onclick="clearEvents()">Clear</button>
+                    <h3><i class="ti ti-mail"></i> Event</h3>
+                    <button class="btn-clear" onclick="clearEvents()"><i class="ti ti-trash"></i> Bersihkan</button>
                 </div>
                 <div class="events-list" id="eventsList"></div>
             </div>
@@ -427,13 +429,13 @@
 
             if (connected) {
                 dot.classList.add('connected');
-                text.textContent = 'Connected';
-                btn.textContent = 'Disconnect';
+                text.textContent = 'Terhubung';
+                btn.innerHTML = '<i class="ti ti-plug-off"></i> Putuskan';
                 btn.className = 'btn-disconnect';
             } else {
                 dot.classList.remove('connected');
-                text.textContent = 'Disconnected';
-                btn.textContent = 'Connect';
+                text.textContent = 'Terputus';
+                btn.innerHTML = '<i class="ti ti-plug"></i> Hubungkan';
                 btn.className = 'btn-connect';
             }
         }
@@ -441,12 +443,12 @@
         function subscribe() {
             const sessionId = document.getElementById('sessionId').value.trim();
             if (!sessionId) {
-                alert('Please enter a session ID');
+                alert('Silakan masukkan ID sesi');
                 return;
             }
 
             if (!socket || !socket.connected) {
-                alert('Please connect to WebSocket first');
+                alert('Silakan hubungkan ke WebSocket terlebih dahulu');
                 return;
             }
 

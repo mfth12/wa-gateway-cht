@@ -4,10 +4,9 @@ const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Chatery WhatsApp API',
-            version: '1.0.0',
-            description: `
-A powerful WhatsApp API backend built with Express.js and Baileys library.
+            title: 'Whatsapp Gateway Cht API',
+            version: '1.4.0',
+            description: `A powerful WhatsApp API backend built with Express.js and Baileys library.
 
 ## Quick Links
 - [🎛️ Dashboard](/dashboard) - Admin Dashboard with API Tester

@@ -1,7 +1,7 @@
 {
-  "name": "chatery_whatsapp",
-  "version": "1.0.0",
-  "description": "Backend for chatery.app",
+  "name": "wa-gateway-cht",
+  "version": "1.4.0",
+  "description": "Backend for Whatsapp Gateway",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/farinchan/chatery_whatsapp.git"
+    "url": "git+https://github.com/mfth12/wa-gateway-cht.git"
   },
   "keywords": [
-    "chatery"
+    "wa-gateway-cht"
   ],
-  "author": "Fajri Rinaldi Chan",
+  "author": "Miftahul Haq",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/farinchan/chatery_whatsapp/issues"
+    "url": "https://github.com/mfth12/wa-gateway-cht/issues"
   },
-  "homepage": "https://github.com/farinchan/chatery_whatsapp#readme",
+  "homepage": "https://github.com/mfth12/wa-gateway-cht#readme",
   "dependencies": {
     "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "cors": "^2.8.5",

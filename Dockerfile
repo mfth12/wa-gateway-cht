@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
@@ -10,16 +10,12 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Production stage
-FROM node:20-alpine
+FROM node:22-alpine
 
 # Add labels
-LABEL maintainer="Farin Azis Chan <farinazischan@gmail.com>"
-LABEL description="Chatery WhatsApp API - Multi-session WhatsApp API with Baileys"
-LABEL version="1.0.0"
-
-# Create non-root user for security
-RUN addgroup -g 1001 -S chatery && \
-    adduser -S -D -H -u 1001 -G chatery chatery
+LABEL maintainer="Miftahul Haq <ciftah12@gmail.com>"
+LABEL description="Whatsapp Gateway Cht - Multi-session WhatsApp API with Baileys"
+LABEL version="1.4.0"
 
 WORKDIR /app
 
@@ -30,18 +26,14 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY . .
 
 # Create directories for sessions and media with proper permissions
-RUN mkdir -p /app/sessions /app/public/media /app/store && \
-    chown -R chatery:chatery /app
-
-# Switch to non-root user
-USER chatery
+RUN mkdir -p /app/sessions /app/public/media /app/store
 
 # Expose port
-EXPOSE 3000
+EXPOSE 3033
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:3033/ || exit 1
 
 # Start the application
 CMD ["node", "index.js"]

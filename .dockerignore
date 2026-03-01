@@ -29,6 +29,9 @@ docker-compose*.yml
 sessions/
 store/
 
+# WA Data (mounted as folder)
+.wa_data/
+
 # Media files (mounted as volume)
 public/media/*
 !public/media/.gitkeep
@@ -39,9 +42,6 @@ CHANGELOG.md
 LICENSE
 docs/
 screenshot/
-
-# N8N nodes package
-n8n-nodes-chatery-whatsapp/
 
 # Tests
 test/

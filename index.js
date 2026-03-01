@@ -51,7 +51,7 @@ const swaggerUiOptions = {
         .swagger-ui .info { margin: 20px 0 }
         .swagger-ui .info .title { color: #25D366 }
     `,
-    customSiteTitle: 'Chatery WhatsApp API - Documentation',
+    customSiteTitle: 'Whatsapp Gateway Cht API - Documentation',
     customfavIcon: '/media/favicon.ico'
 };
 
@@ -76,10 +76,10 @@ app.get('/api/health', (req, res) => {
 // Dashboard Login
 app.post('/api/dashboard/login', (req, res) => {
     const { username, password } = req.body;
-    
+
     const validUsername = process.env.DASHBOARD_USERNAME || 'admin';
     const validPassword = process.env.DASHBOARD_PASSWORD || 'admin123';
-    
+
     if (username === validUsername && password === validPassword) {
         res.json({
             success: true,
@@ -123,7 +123,7 @@ app.use((err, req, res, next) => {
 
 // Start Server
 server.listen(PORT, () => {
-    console.log(`Chatery WhatsApp API running on http://localhost:${PORT}`);
+    console.log(`Whatsapp Gateway Cht API running on http://localhost:${PORT}`);
     console.log(`WebSocket server running on ws://localhost:${PORT}`);
     console.log(`API Documentation: http://localhost:${PORT}`);
 });

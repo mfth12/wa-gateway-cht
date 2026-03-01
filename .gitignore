@@ -1,8 +1,8 @@
+.wa_data/
+auth_info/
 node_modules/
+public/media/
+sessions/
 .env
 .DS_Store
 *.log
-auth_info/
-sessions/
-public/media/
-n8n-nodes-chatery-whatsapp/

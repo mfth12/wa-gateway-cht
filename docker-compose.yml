@@ -1,30 +1,35 @@
 version: '3.8'
 
 services:
-  chatery:
+  wa-gateway:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: chatery-whatsapp-api
+    container_name: wa-gateway-cht
     restart: unless-stopped
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT:-3033}:3033"
     environment:
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=3033
       - CORS_ORIGIN=${CORS_ORIGIN:-*}
-      - DASHBOARD_USERNAME=${DASHBOARD_USERNAME:-admin}
-      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-admin123}
+      - DASHBOARD_USERNAME=${DASHBOARD_USERNAME:-root}
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-123123}
       - API_KEY=${API_KEY:-}
     volumes:
       # Persist WhatsApp sessions
-      - chatery_sessions:/app/sessions
+      # - wa-gateway_sessions:/app/sessions
+      - ./.wa_data/sessions:/app/sessions
+
       # Persist received media files
-      - chatery_media:/app/public/media
+      # - wa-gateway_media:/app/public/media
+      - ./.wa_data/media:/app/public/media
+
       # Persist message store
-      - chatery_store:/app/store
+      # - wa-gateway_store:/app/store
+      - ./.wa_data/store:/app/store
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3033/"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -35,16 +40,16 @@ services:
         max-size: "10m"
         max-file: "3"
     networks:
-      - chatery-network
+      - wa-gateway-network
 
-volumes:
-  chatery_sessions:
-    driver: local
-  chatery_media:
-    driver: local
-  chatery_store:
-    driver: local
+# volumes:
+#   wa-gateway_sessions:
+#     driver: local
+#   wa-gateway_media:
+#     driver: local
+#   wa-gateway_store:
+#     driver: local
 
 networks:
-  chatery-network:
+  wa-gateway-network:
     driver: bridge

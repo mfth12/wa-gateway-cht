@@ -1082,29 +1082,29 @@
                     </div>
                 </div>
 
-                <!-- Quick Send -->
+                <!-- Kirim Pesan Cepat -->
                 <div class="card" style="margin-top: 24px;">
                     <div class="card-header">
-                        <div class="card-title">✉️ Quick Send</div>
+                        <div class="card-title">✉️ Kirim Pesan Cepat</div>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="form-label">Session</label>
-                            <select class="form-input" id="quickSession">
-                                <option value="">Select session...</option>
+                            <label class="form-label">Sesi</label>
+                            <select class="form-input select2" id="quickSession">
+                                <option value="">Pilih Sesi...</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Phone Number</label>
+                            <label class="form-label">Nomor Telepon</label>
                             <input type="text" class="form-input" id="quickPhone" placeholder="628123456789">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Message</label>
+                            <label class="form-label">Pesan</label>
                             <textarea class="form-input" id="quickMessage" rows="3"
-                                placeholder="Type your message..."></textarea>
+                                placeholder="Ketik pesan Anda..."></textarea>
                         </div>
                         <button class="btn btn-primary" onclick="quickSend()" style="width: 100%;">
-                            Send Message
+                            Kirim Pesan
                         </button>
                     </div>
                 </div>
@@ -1543,7 +1543,7 @@
             const select = document.getElementById('quickSession');
             const connectedSessions = sessions.filter(s => s.status === 'connected');
 
-            select.innerHTML = '<option value="">Select session...</option>' +
+            select.innerHTML = '<option value="">Pilih Sesi...</option>' +
                 connectedSessions.map(s => `<option value="${s.sessionId}">${s.name || s.sessionId}</option>`).join('');
         }
 

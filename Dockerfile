@@ -12,6 +12,10 @@ RUN npm ci --only=production
 # Production stage
 FROM node:22-alpine
 
+# Set Timezone to WIB (Asia/Jakarta)
+RUN apk add --no-cache tzdata
+ENV TZ=Asia/Jakarta
+
 # Add labels
 LABEL maintainer="Miftahul Haq <ciftah12@gmail.com>"
 LABEL description="Whatsapp Gateway Cht - Multi-session WhatsApp API with Baileys"
